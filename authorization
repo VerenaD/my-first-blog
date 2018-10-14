@@ -1,0 +1,16 @@
+import requests
+my_domain = 'vedra.pythonanywhere.com'
+username = 'vedra'
+token = 'b84699277a468c623daeba57d8c09c6d9c77f17d'
+
+response = requests.post(
+    'https://www.pythonanywhere.com/api/v0/user/{username}/webapps/{domain}/reload/'.format(
+        username=username, domain=my_domain
+    ),
+    headers={'Authorization': 'Token {token}'.format(token=token)}
+)
+if response.status_code == 200:
+    print('All OK')
+else:
+    print('Got unexpected status code {}: {!r}'.format(response.status_code, response.content))
+      
